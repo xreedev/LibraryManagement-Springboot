@@ -1,4 +1,4 @@
-package com.example.LibraryApplication.Model;
+package com.example.LibraryManagementApplication.Model;
 
 public class Book {
     private String name;

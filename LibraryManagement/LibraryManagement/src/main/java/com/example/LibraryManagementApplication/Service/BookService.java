@@ -1,27 +1,53 @@
-//package com.example.LibraryManagement.Service;
-//
-//
-//import com.example.LibraryManagement.Model.Book;
-//import org.springframework.stereotype.Service;
-//
-//import java.util.ArrayList;
-//
-//@Service
-//public class BookService {
-//
-//
-//    public Book getBook(String id) {
-//        Book wantedBook = null;
-//        ArrayList<Book> bookList = new ArrayList<>();
-//        bookRepository.findAll().forEach(bookList::add);
-//        for (Book book : bookList) {
-//            if (book.getBookId().equals(id))
-//                wantedBook = book;
-//            else
-//                wantedBook = new Book("404", "NOT FOUND", "No Book with that name");
-//        }
-//        return wantedBook;
-//    }
-//
-//
-//}
+package com.example.LibraryManagementApplication.Service;
+
+import com.example.LibraryApplication.Model.Book;
+import com.example.LibraryManagementApplication.Model.Book;
+import org.springframework.stereotype.Service;
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class BookService implements IBookService {
+
+    private List<Book> books = new ArrayList<>();
+
+    @Override
+    public List<Book> getAllBooks() {
+        return books;
+    }
+
+    @Override
+    public Book getBookById(String bookId) {
+        for (Book book : books) {
+            if (book.getBookId().equals(bookId)) {
+                return book;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Book createBook(Book book) {
+        books.add(book);
+        return book;
+    }
+
+    @Override
+    public Book updateBook(String bookId, Book updatedBook) {
+        for (Book book : books) {
+            if (book.getBookId().equals(bookId)) {
+                book.setName(updatedBook.getName());
+                book.setAuthor(updatedBook.getAuthor());
+                return book;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void deleteBook(String bookId) {
+        books.removeIf(book -> book.getBookId().equals(bookId));
+    }
+}
+
+}
