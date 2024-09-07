@@ -1,5 +1,6 @@
-package com.example.LibraryApplication.Service;
-import com.example.LibraryApplication.Model.User;
+package com.example.LibraryManagementApplication.Service;
+
+import com.example.LibraryManagementApplication.Model.User;
 
 import java.util.List;
 
@@ -9,6 +10,8 @@ public interface IUserService {
     User getUserById(String userId);
 
     User createUser(User user);
-    User updateUser(String  id, User user);
-    void deleteUser(String  id);
+
+    User updateUser(String userId, User user);
+
+    void deleteUser(String userId);
 }

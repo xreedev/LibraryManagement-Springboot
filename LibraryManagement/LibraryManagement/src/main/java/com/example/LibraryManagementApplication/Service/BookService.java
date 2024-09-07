@@ -1,6 +1,5 @@
 package com.example.LibraryManagementApplication.Service;
 
-import com.example.LibraryApplication.Model.Book;
 import com.example.LibraryManagementApplication.Model.Book;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
@@ -50,4 +49,4 @@ public class BookService implements IBookService {
     }
 }
 
-}
+
